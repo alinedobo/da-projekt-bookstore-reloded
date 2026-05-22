@@ -19,18 +19,18 @@ html {
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-body{
+body {
     padding: 0px max((calc(100% - 1024px) / 2), 16px);
     background-color: aqua;
+
+    h1 {
+        font-size: clamp(1.75rem, 3.5dvh, 3rem);
+    }
 }
 
 header {
     height: 10dvh;
     padding: 3dvh;
-
-    h1 {
-        font-size: clamp(1.75rem, 3.5dvh, 3rem);
-    }
 }
 
 main {
@@ -38,15 +38,71 @@ main {
     min-height: 85dvh;
     width: 100%;
 
-    #books-wrapper{
+    #books-wrapper {
         height: 100%;
         width: 100%;
         background-color: aquamarine;
         display: flex;
         flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 16px;
     }
 
+    .book-card {
+        height: 700px;
+        width: 300px;
+        display: flex;
+        flex-direction: column;
+        border: 1px black solid;
+        padding: 8px;
+        gap: 16px;
 
+        h2 {
+            text-align: center;
+            font-style: italic;
+        }
+
+        img {
+            height: 150px;
+            width: 150px;
+            align-self: center;
+            justify-self: center;
+            background-color: black;
+        }
+
+        .book-numbers {
+            display: flex;
+            justify-content: space-between;
+
+            .likes-and-liked {
+                display: flex;
+                justify-content: flex-end;
+                gap: 16px;
+
+                button{
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .book-details {
+            th,
+            td {
+                text-align: start;
+            }
+        }
+
+        .comment-box {
+            background-color: yellow;
+            height: 250px;
+            overflow-y: auto;
+        }
+
+        .comments-box::-webkit-scrollbar {
+            width: 6px;
+        }
+    }
 }
 
 footer {
