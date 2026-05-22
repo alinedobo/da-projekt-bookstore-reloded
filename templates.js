@@ -35,7 +35,7 @@ function getBookTemplate(books, bookIndex){
             </div>
             <div>
                 <input type="text" id="comment-input-${bookIndex}">
-                <button onclick="saveComment(bookIndex)">&#10146;</button>
+                <button onclick="saveComment(${bookIndex})">&#10146;</button>
             </div>
             </div>
         </section>

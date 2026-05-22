@@ -49,10 +49,8 @@ function saveToLocalStorage() {
 
 
 function saveComment(bookIndex) {
-    const commentInputRef = document.getElementById("comment-input-[bookIndex]");
+    const commentInputRef = document.getElementById("comment-input-${bookIndex}");
     const commentInput = commentInputRef.value;
-
-    commentInputRef.value = "";
 
     if (commentInput === "") {
         /* do nothing */
@@ -66,4 +64,6 @@ function saveComment(bookIndex) {
         saveToLocalStorage();
         renderComments(bookIndex);
     }
+
+        commentInput = "";
 }
