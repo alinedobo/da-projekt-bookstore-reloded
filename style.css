@@ -20,17 +20,17 @@ html {
 }
 
 body {
-    padding: 0px max((calc(100% - 1024px) / 2), 16px);
+    padding: 0px max((calc(100% - 1280px) / 2), 16px);
     background-color: aqua;
 
-    h1 {
-        font-size: clamp(1.75rem, 3.5dvh, 3rem);
+    h1{
+        font-size: clamp(1.25rem, 2.5dvw, 3rem);
     }
 }
 
 header {
     height: 10dvh;
-    padding: 3dvh;
+    padding: 2dvh 2dvw;
 }
 
 main {
@@ -51,7 +51,7 @@ main {
 
     .book-card {
         height: 700px;
-        width: 300px;
+        width: 350px;
         display: flex;
         flex-direction: column;
         border: 1px black solid;
@@ -87,8 +87,7 @@ main {
         }
 
         .book-details {
-            th,
-            td {
+            th, td {
                 text-align: start;
             }
         }
@@ -102,6 +101,31 @@ main {
         .comments-box::-webkit-scrollbar {
             width: 6px;
         }
+
+        .comment-input-box{
+            width: 100%;
+            height: fit-content;
+            background-color: lightcoral;
+            display: flex;
+            justify-content: space-between;
+            padding: 4px;
+
+            input{
+                width: 85%;
+                background-color: brown;
+                border-bottom: 2px solid black;
+            }
+
+            button{
+                width: 15%;
+                font-size: 24px;
+            }
+
+            button:hover{
+                cursor: pointer;
+            }
+        }
+
     }
 }
 

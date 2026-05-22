@@ -33,7 +33,7 @@ function getBookTemplate(books, bookIndex){
                 ${renderComments(bookIndex)}
                 </table>
             </div>
-            <div>
+            <div class="comment-input-box">
                 <input type="text" id="comment-input-${bookIndex}">
                 <button onclick="saveComment(${bookIndex})">&#10146;</button>
             </div>
