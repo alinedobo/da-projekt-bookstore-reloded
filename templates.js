@@ -27,17 +27,18 @@ function getBookTemplate(books, bookIndex){
                 </div>
             </div>
             <div>
-            <h3>Kommentare:</h3>
-            <div class="comment-box">
-                <table id="comments-table-${bookIndex}">
-                ${renderComments(bookIndex)}
-                </table>
+                <h3>Kommentare:</h3>
+                <div class="comment-box">
+                    <table id="comments-table-${bookIndex}">${renderComments(bookIndex)}
+                    </table>
+                </div>
             </div>
-            <h3>Teile deine Meinung:</h3>
-            <div class="comment-input-box">
-                <input type="text" id="comment-input-${bookIndex}">
-                <button onclick="saveComment(${bookIndex})">&#10146;</button>
-            </div>
+            <div>
+                <h3>Teile deine Meinung:</h3>
+                <div class="comment-input-box">
+                    <input type="text" id="comment-input-${bookIndex}">
+                    <button onclick="saveComment(${bookIndex})">&#10146;</button>
+                </div>
             </div>
         </section>
         `;
