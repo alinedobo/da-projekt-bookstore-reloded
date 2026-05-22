@@ -20,19 +20,20 @@ function getBookTemplate(books, bookIndex){
             <div class="book-numbers">
                 <h3 id="book-price-${bookIndex}">${books[bookIndex].price.toFixed(2)}€</h3>
                 <div class="likes-and-liked">
-                <p id="likes-counter">${books[bookIndex].likes}</p>
-                <button onclick="toggleLike(${bookIndex})">
+                <p id="likes-counter-${bookIndex}">${books[bookIndex].likes}</p>
+                <button id="like-${bookIndex}" onclick="toggleLike(${bookIndex})">
                 ${books[bookIndex].liked ? "&#128150;" : "&#128148"}
                 </button>
                 </div>
             </div>
             <div>
-            <h3>Kommentare (${books[bookIndex].comments.length}):</h3>
+            <h3>Kommentare:</h3>
             <div class="comment-box">
                 <table id="comments-table-${bookIndex}">
                 ${renderComments(bookIndex)}
                 </table>
             </div>
+            <h3>Teile deine Meinung:</h3>
             <div class="comment-input-box">
                 <input type="text" id="comment-input-${bookIndex}">
                 <button onclick="saveComment(${bookIndex})">&#10146;</button>

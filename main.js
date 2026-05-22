@@ -1,13 +1,13 @@
 let books;
-    if(JSON.parse(localStorage.getItem("books")) !== null){
-        console.log("not empty");
-        books = JSON.parse(localStorage.getItem("books"));
-    } else {
-        console.log("empty");
-        books = myBooks;    
-    }
+if (JSON.parse(localStorage.getItem("books")) !== null) {
+    console.log("not empty");
+    books = JSON.parse(localStorage.getItem("books"));
+} else {
+    console.log("empty");
+    books = myBooks;
+}
 
-    console.log(books);
+console.log(books);
 
 function init() {
     renderBookCards();
@@ -17,12 +17,12 @@ function renderBookCards() {
     const bookWrapperRef = document.getElementById("books-wrapper");
     bookWrapperRef.innerHTML = "";
 
-     for (let bookIndex = 0; bookIndex < books.length; bookIndex++) {
+    for (let bookIndex = 0; bookIndex < books.length; bookIndex++) {
         bookWrapperRef.innerHTML += getBookTemplate(books, bookIndex);
     }
 }
 
-function renderComments(bookIndex){
+function renderComments(bookIndex) {
     let comments = "";
     for (let commentIndex = 0; commentIndex < books[bookIndex].comments.length; commentIndex++) {
         comments += getComments(bookIndex, commentIndex);
@@ -33,23 +33,32 @@ function renderComments(bookIndex){
 function toggleLike(bookIndex) {
     if (books[bookIndex].liked) {
         books[bookIndex].liked = false;
-        books[bookIndex].likes --;
+        books[bookIndex].likes--;
     } else {
         books[bookIndex].liked = true;
-        books[bookIndex].likes ++;
+        books[bookIndex].likes++;
     }
     saveToLocalStorage();
-    renderBookCards(bookIndex);
+    updateLike(bookIndex);
+}
+
+function updateLike(bookIndex){
+    const likeRef = document.getElementById(`like-${bookIndex}`);
+    likeRef.innerHTML = /*html*/`
+        ${books[bookIndex].liked ? "&#128150;" : "&#128148"}
+    `
+    const likeCounterRef = document.getElementById(`likes-counter-${bookIndex}`);
+    likeCounterRef.innerHTML = /*html*/`
+        <p id="likes-counter-${bookIndex}">${books[bookIndex].likes}</p>
+    `
 }
 
 function saveToLocalStorage() {
-    console.log(books + " pre save");
     localStorage.setItem("books", JSON.stringify(books));
 }
 
-
 function saveComment(bookIndex) {
-    const commentInputRef = document.getElementById("comment-input-${bookIndex}");
+    const commentInputRef = document.getElementById(`comment-input-${bookIndex}`);
     const commentInput = commentInputRef.value;
 
     if (commentInput === "") {
@@ -62,8 +71,12 @@ function saveComment(bookIndex) {
         books[bookIndex].comments.push(myComment);
 
         saveToLocalStorage();
-        renderComments(bookIndex);
     }
+    commentInputRef.value = "";
 
-        commentInput = "";
+    const commentBoxRef = document.getElementById(`comments-table-${bookIndex}`);
+    commentBoxRef.innerHTML = /*html*/`
+        ${renderComments(bookIndex)}
+    `
+
 }
